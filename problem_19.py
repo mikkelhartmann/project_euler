@@ -14,6 +14,7 @@ How many Sundays fell on the first of the month during the twentieth century (1 
 """
 
 month_to_day = [31, 28, 31, 30, 31, 30, 31, 31, 30, 31, 30, 31]
+print("Days in a year:", sum(month_to_day))
 
 # Create isLeapYear function
 def isLeapYear(year):
@@ -22,7 +23,6 @@ def isLeapYear(year):
 # Initialize the counter
 counter = 0
 
-# For each year from 1991 to 2000
 days_since_januar_1_1900 = 365
 for year in range(1901, 2001):
     print(year)
@@ -32,11 +32,19 @@ for year in range(1901, 2001):
     else:
         month_to_day[1] = 28
     
-    for days_in_month in month_to_day:
-        days_since_januar_1_1900 += days_in_month
-        if days_since_januar_1_1900%7 == 6:
-            print("The day was a sunday!")
-            counter += 1
-print(counter)
+    if year==2000:
+        for days_in_month in month_to_day[:-2]:
+            if days_since_januar_1_1900%7 == 6:
+                print("The day was a sunday!")
+                counter += 1
+            days_since_januar_1_1900 += days_in_month
 
-print("The answer is", counter==171)
+    else:    
+        for days_in_month in month_to_day:
+            if days_since_januar_1_1900%7 == 6:
+                print("The day was a sunday!")
+                counter += 1
+            days_since_januar_1_1900 += days_in_month
+
+print("My answer is", counter)
+print("My answer is", counter==171)
